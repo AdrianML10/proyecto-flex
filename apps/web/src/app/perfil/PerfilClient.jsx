@@ -30,13 +30,20 @@ export default function PerfilClient({ nombre, email, rol, avatarUrl }) {
   const [guardado, setGuardado] = useState(false)
   const [avatar, setAvatar] = useState(avatarUrl)
   const router = useRouter()
-
   const [perfil, setPerfil] = useState({ nombre, email, telefono: '', fechaNac: '' })
   const [pass, setPass] = useState({ actual: '', nueva: '', confirmar: '' })
   const [tarjetas, setTarjetas] = useState(TARJETAS_INIT)
   const [nuevaTarjeta, setNuevaTarjeta] = useState(false)
   const [formTarjeta, setFormTarjeta] = useState({ numero: '', titular: '', expira: '', cvv: '' })
   const [notifs, setNotifs] = useState({ pedidos: true, entradas: true, ofertas: false, vip: true, newsletter: false })
+  const [eliminar, setEliminar] = useState('')
+
+
+  async function Eliminar() {
+    const supabase = createClient()
+    await supabase.auth.signOut()
+    router.push('/')
+  }
 
   async function handleLogout() {
     const supabase = createClient()
