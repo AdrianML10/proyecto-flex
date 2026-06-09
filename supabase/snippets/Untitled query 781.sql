@@ -1,3 +1,4 @@
+
 update public.productos set imagen_url = 'http://localhost:54321/storage/v1/object/public/productos/agua-mineral.jpg'      where nombre = 'Agua mineral 50cl';
 update public.productos set imagen_url = 'http://localhost:54321/storage/v1/object/public/productos/refresco-cola.jpg'     where nombre = 'Refresco cola';
 update public.productos set imagen_url = 'http://localhost:54321/storage/v1/object/public/productos/cerveza-artesana.jpg'  where nombre = 'Cerveza artesana';

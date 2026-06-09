@@ -6,7 +6,7 @@ import FlexLogo from '@/components/layout/FlexLogo'
 import { register } from '@/lib/actions/auth'
 
 export default function PaginaRegister() {
-  const [form, setForm] = useState({ nombre: '', email: '', password: '', confirmar: '' })
+  const [form, setForm] = useState({ nombre: '', email: '', password: '', confirmar: ''})
   const [error, setError] = useState('')
   const [cargando, setCargando] = useState(false)
   const set = k => e => setForm(prev => ({ ...prev, [k]: e.target.value }))
@@ -30,6 +30,8 @@ export default function PaginaRegister() {
     setCargando(false)
     if (result?.error) setError(result.error)
   }
+
+  console.log(form)
 
   return (
     <div className="min-h-screen flex">
@@ -93,7 +95,7 @@ export default function PaginaRegister() {
                 placeholder="tu@email.com"
                 value={form.email}
                 onChange={set('email')}
-                required
+                
                 className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-100 placeholder-zinc-600 outline-none focus:border-gold-500 transition-colors"
               />
             </div>
