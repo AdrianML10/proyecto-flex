@@ -195,9 +195,38 @@ Si usas un dominio personalizado, recuerda actualizar también la URL del webhoo
 
 ---
 
+## Probar la PWA en producción
+
+El service worker y la instalación PWA están **desactivados en desarrollo** a propósito — el caché agresivo interfiere con los cambios de código. En local verás este mensaje en la consola del servidor, que es normal:
+
+```text
+○ (pwa) PWA support is disabled
+```
+
+Para probar la PWA necesitas el deploy en Vercel (HTTPS real). Una vez desplegado:
+
+1. Abre la URL desde tu móvil
+2. Inicia sesión — al entrar en la app aparecerá automáticamente el **popup de instalación**
+3. En Android/Chrome pulsa **Instalar** para añadirla a la pantalla de inicio
+4. En iPhone/Safari el popup muestra instrucciones manuales (Safari no permite instalación automática)
+
+> El popup solo aparece una vez por sesión. Si lo cerraste sin instalar y quieres verlo de nuevo, abre una pestaña de incógnito o borra el `sessionStorage` desde las DevTools.
+
+### Desarrollo local con Turbopack
+
+Para el día a día usa Turbopack — es significativamente más rápido que Webpack:
+
+```bash
+npm run dev        # arranca con --turbopack
+```
+
+El build de producción (`npm run build`) sigue usando Webpack, que es lo que Vercel ejecuta al desplegar.
+
+---
+
 ## Probar en móvil
 
-Con la app en Vercel ya tienes HTTPS real. Abre la URL desde tu móvil y verás el banner de instalación de la PWA. Acepta y la app se instalará en la pantalla de inicio.
+Con la app en Vercel ya tienes HTTPS real. Abre la URL desde tu móvil, inicia sesión y el popup de instalación aparecerá solo.
 
 Para probar el escáner de QR del portero:
 

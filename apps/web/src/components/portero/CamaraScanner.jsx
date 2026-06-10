@@ -12,7 +12,7 @@ export default function CamaraScanner({ onScan }) {
 
     const scanner = new Html5QrcodeScanner(
       'qr-reader',
-      { fps: 10, qrbox: { width: 220, height: 220 }, supportedScanTypes: [0] },
+      { fps: 10, qrbox: { width: 220, height: 220 }, supportedScanTypes: [0], facingMode: 'environment' },
       false,
     )
 
