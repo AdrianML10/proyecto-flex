@@ -1,5 +1,6 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse } from 'next/server'
+import { getSupabaseEnv } from './lib/supabase/env'
 
 const PUBLIC_ROUTES = ['/login', '/register']
 
@@ -12,9 +13,10 @@ const RUTAS_ROL = [
 ]
 
 function crearClienteSupabase(request, getResponse) {
+  const { url, key } = getSupabaseEnv()
   return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    url,
+    key,
     {
       cookies: {
         getAll: () => request.cookies.getAll(),
